@@ -35,7 +35,7 @@ end
 
 function MySQLTest:SetUpSql()
 	-- Create our table
-	if self.sqlConnection:execute("CREATE TABLE IF NOT EXISTS `players` (`steam_id` varchar(20) NOT NULL, `name` varchar(255) NOT NULL, `join_count` int(11) NOT NULL DEFAULT 1, PRIMARY KEY (`steam_id`));") == nil then
+	if self.sqlConnection:execute("CREATE TABLE IF NOT EXISTS `players` (`steam_id` TEXT UNIQUE NOT NULL, `name` TEXT NOT NULL, `join_count` INTEGER NOT NULL DEFAULT 1, PRIMARY KEY (`steam_id`));") == nil then
 		-- Execute returned nil, this means an error occurred
 		print("Failed to create table.")
 		return false
